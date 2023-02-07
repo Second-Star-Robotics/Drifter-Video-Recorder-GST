@@ -69,7 +69,7 @@ print("Right Output File : " + right_filename_str)
 #DEFAULT_PIPELINE="nvarguscamerasrc ! video/x-raw(memory:NVMM), width=1920, height=1080, format=NV12, framerate=30/1 ! omxh264enc bitrate=30000000 peak-bitrate=40000000 ! video/x-h264, stream-format=(string)byte-stream ! h264parse ! qtmux ! filesink location=" + filename_str
 #DEFAULT_PIPELINE="v4l2src device=/dev/video3 ! videorate  ! image/jpeg,framerate=30/1,width=1920,height=1080 ! jpegparse ! avimux name=muxer1 ! filesink location=" + left_filename_str + ".avi"
 #DEFAULT_PIPELINE="v4l2src device=/dev/video1 ! videorate  ! image/jpeg,framerate=30/1,width=1920,height=1080 ! jpegparse ! avimux name=muxer2 ! filesink location=" + right_filename_str + ".avi"
-DEFAULT_PIPELINE="v4l2src device=/dev/video3 ! videorate  ! image/jpeg,framerate=30/1,width=1920,height=1080 ! jpegparse ! avimux name=muxer1 ! filesink location=" + left_filename_str + ".avi v4l2src device=/dev/video1 ! videorate  ! image/jpeg,framerate=30/1,width=1920,height=1080 ! jpegparse ! avimux name=muxer2 ! filesink location=" + right_filename_str + ".avi"
+DEFAULT_PIPELINE="v4l2src device=/dev/video2 ! videorate  ! image/jpeg,framerate=30/1,width=1920,height=1080 ! jpegparse ! avimux name=muxer1 ! filesink location=" + left_filename_str + ".avi v4l2src device=/dev/video0 ! videorate  ! image/jpeg,framerate=30/1,width=1920,height=1080 ! jpegparse ! avimux name=muxer2 ! filesink location=" + right_filename_str + ".avi"
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-p", "--pipeline", required=False,
